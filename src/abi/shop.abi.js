@@ -1,10 +1,4 @@
-const Web3 = require("web3");
-
-const web3 = new Web3("http://127.0.0.1:7545");
-
-const contractAddress = `0x1Ac808167Da129F1B4163D796439f4420b4a3f8e`;
-
-const abi = [
+const shopAbi = [
   {
     inputs: [],
     stateMutability: "nonpayable",
@@ -45,28 +39,4 @@ const abi = [
     constant: true,
   },
 ];
-
-async function accounts() {
-  try {
-    const accounts = await web3.eth.getAccounts();
-    return accounts;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-async function contract() {
-  try {
-    const contract = await new web3.eth.Contract(abi, contractAddress);
-    let data = await contract.methods.lakshit().call();
-    console.log("contract", data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function runCode() {
-  console.log(await accounts());
-}
-
-contract();
+module.exports = shopAbi;
